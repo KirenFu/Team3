@@ -4,11 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ToDoList {
-private HashMap<String, Task> tasks = new HashMap<String, Task>();
-	
+	private HashMap<String, Task> tasks = new HashMap<String, Task>();
+
 	public void addTask (Task task) {
 		tasks.put(task.getDescription(), task);
 	}
+	
+	public void setTask (Task oldTask, Task newTask) {
+		tasks.remove(oldTask.getDescription());
+		addTask(newTask);
+	}
+	
 	public void completeTask(String description) {
 		tasks.get(description).setComplete(true);
 	}
@@ -24,7 +30,7 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 	public Collection<Task> getAllTasks() {
 		return null;
 	}
-	
+
 	public Collection<Task> getCompletedTasks() {
 		List<Task> tasklList = new ArrayList<Task>(tasks.values());
 		// Add code here
